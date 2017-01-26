@@ -5,25 +5,36 @@ public void setup()
 }
 public void draw()
 {
-sierpinski(100,200,100);
+	background(0);
+	sierpinski(0,400,400);
 }
 int num = 20;
+int game = true;
 public void mouseDragged()//optional
 {
 	num += 5;
 }
+
 public void sierpinski(int x, int y, int len) 
 {
+	int red = (int)(Math.random()*255);
+	int green = (int)(Math.random()*255);
+	int blue = (int)(Math.random()*255);
 	if(len <= num)
 	{
-		fill(0);
-		triangle(x, y, x + len/2, y + len/2, x+ len, y);	
+		fill(red,green,blue);
+		stroke(red,green,blue);
+		triangle(x, y, x + len/2, y - len/2, x+ len, y);	
 	}
 	else
 	{
-		fill(0);
+		fill(red,green,blue);
 		sierpinski(x, y, len/2);
 		sierpinski(x+len/2, y, len/2);
-		sierpinski(x+len/4, y+len/2, len/2);
+		sierpinski(x+len/4, y-len/2, len/2);
+	}
+	if(mouseX = game)
+	{
+		num-=5;
 	}
 }
